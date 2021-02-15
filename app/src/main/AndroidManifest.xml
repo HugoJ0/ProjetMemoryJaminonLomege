@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetMemoryJaminonLomege">
-        <activity android:name=".Regles"></activity>
+        <activity android:name=".Profil"></activity>
+        <activity android:name=".Regles" />
         <activity android:name=".Niveau1" />
         <activity android:name=".ChoixMode" />
         <activity android:name=".Classement" />
-        <activity android:name=".Profil" />
+        <activity android:name=".Menu" />
         <activity android:name=".Inscription" />
         <activity android:name=".Connection" />
         <activity android:name=".MainActivity">
