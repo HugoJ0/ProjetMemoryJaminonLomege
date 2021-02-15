@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ProjetMemoryJaminonLomege</string>
+    <string name="connexion">Connexion</string>
+    <string name="se_connecter">Se connecter</string>
 </resources>
