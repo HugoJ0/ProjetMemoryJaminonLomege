@@ -51,7 +51,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="cursive"
-        android:text="Color Memory"
+        android:text="@string/color_memory"
         android:textColor="#000000"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -64,17 +64,11 @@
         android:id="@+id/id_bouton_regles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Regles"
+        android:text="@string/regles"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="left" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -87,7 +81,7 @@
         android:id="@+id/id_bouton_connection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connection"
+        android:text="@string/connection"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"
@@ -97,7 +91,7 @@
         android:id="@+id/id_bouton_inscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Inscription"
+        android:text="@string/inscription"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline8"

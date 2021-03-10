@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">ProjetMemoryJaminonLomege</string>
+    <string name="color_memory">Color Memory</string>
+    <string name="regles">Regles</string>
+    <string name="connection">Connection</string>
+    <string name="inscription">Inscription</string>
+    <string name="profil">Profil</string>
+    <string name="score">Score :</string>
+    <string name="deconnection">Deconnection</string>
+    <string name="classement">Classement</string>
+    <string name="nouvelle_partie">Nouvelle partie</string>
+    <string name="continuer">Continuer</string>
+    <string name="choix_du_mode">Choix du mode</string>
+    <string name="facile">Facile</string>
+    <string name="difficile">Difficile</string>
+    <string name="expert">Expert</string>
+    <string name="chrono">Chrono</string>
+    <string name="retour">Retour</string>
+    <string name="regle1">1/ Un ou plusieurs blocs de couleurs sont allumées dans un certain ordre. Le nombre de blocs éclairé s’incrémente de 1 au fur et à mesure (nombre maximale de bloc à éclairer dans une séquence sera fixé).</string>
+    <string name="regle2">2/ Le joueur doit ensuite appuyer sur les blocs éclairés dans le même ordre pour reproduire la même séquence.</string>
+    <string name="regle3">3/ Si le joueur échoue, il perd une vie. S’il lui reste au moins 1 vie, on redémarre au début sinon on passe au suivant. Si le joueur réussit, on redémarre au début mais avec un bloc de couleur en plus choisi de façon aléatoire par le jeu.</string>
+    <string name="regle4">4/ La partie se termine en indiquant que le joueur a perdu ou en indiquant son score pour ensuite revenir à l’écran lui proposant de recommencer la partie perdue.</string>
 </resources>
