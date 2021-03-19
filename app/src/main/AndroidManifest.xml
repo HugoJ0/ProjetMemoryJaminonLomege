@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetMemoryJaminonLomege">
-        <activity android:name=".Profil"></activity>
+        <activity android:name=".Niveau7"></activity>
+        <activity android:name=".Niveau6" />
+        <activity android:name=".Niveau5" />
+        <activity android:name=".Niveau4" />
+        <activity android:name=".Niveau3" />
+        <activity android:name=".Niveau2" />
+        <activity android:name=".Profil" />
         <activity android:name=".Regles" />
         <activity android:name=".Niveau1" />
         <activity android:name=".ChoixMode" />

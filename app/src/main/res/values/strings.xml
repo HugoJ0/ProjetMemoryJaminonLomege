@@ -22,4 +22,11 @@
     <string name="regle4">4/ La partie se termine en indiquant que le joueur a perdu ou en indiquant son score pour ensuite revenir à l’écran lui proposant de recommencer la partie perdue.</string>
     <string name="homme">Homme</string>
     <string name="femme">Femme</string>
+    <string name="niveau_1">Niveau 1</string>
+    <string name="niveau_2">Niveau 2</string>
+    <string name="niveau_3">Niveau 3</string>
+    <string name="niveau_4">Niveau 4</string>
+    <string name="niveau_5">Niveau 5</string>
+    <string name="niveau_6">Niveau 6</string>
+    <string name="niveau_7">Niveau 7</string>
 </resources>
