@@ -7,14 +7,13 @@
     tools:context=".Niveau7">
 
     <Button
-        android:id="@+id/button34"
+        android:id="@+id/id_bouton_retour"
         android:layout_width="38dp"
         android:layout_height="33dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Button"
         app:icon="@drawable/abc_vector_test"
         app:layout_constraintBottom_toTopOf="@+id/guideline22"
         app:layout_constraintEnd_toStartOf="@+id/textView9"
