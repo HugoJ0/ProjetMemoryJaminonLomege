@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -23,6 +24,7 @@ public class Jeux extends AppCompatActivity {
         partieEnCours=true;
         int nbBlocs=4;
         while(partieEnCours||nbBlocs>10){
+            Button[] tabBoutons;
             changeView(nbBlocs);
             niveau(nbBlocs);
             nbBlocs++;
@@ -65,6 +67,7 @@ public class Jeux extends AppCompatActivity {
     }
 
     public void changeView(int nbBlocs){
+        Button[] tabBoutons=new Button[nbBlocs];
         switch(nbBlocs){
             case 4:
                 setContentView(R.layout.activity_niveau1);
@@ -86,8 +89,19 @@ public class Jeux extends AppCompatActivity {
                 break;
             case 10:
                 setContentView(R.layout.activity_niveau7);
+                tabBoutons[0]=findViewById(R.id.id_bouton_couleur_1);
+                tabBoutons[1]=findViewById(R.id.id_bouton_couleur_2);
+                tabBoutons[2]=findViewById(R.id.id_bouton_couleur_3);
+                tabBoutons[3]=findViewById(R.id.id_bouton_couleur_4);
+                tabBoutons[4]=findViewById(R.id.id_bouton_couleur_5);
+                tabBoutons[5]=findViewById(R.id.id_bouton_couleur_6);
+                tabBoutons[6]=findViewById(R.id.id_bouton_couleur_7);
+                tabBoutons[7]=findViewById(R.id.id_bouton_couleur_8);
+                tabBoutons[8]=findViewById(R.id.id_bouton_couleur_9);
+                tabBoutons[9]=findViewById(R.id.id_bouton_couleur_10);
                 break;
         }
+
     }
     public void niveau(int nbBlocs){
         int [] possible=new int[nbBlocs];
@@ -97,8 +111,14 @@ public class Jeux extends AppCompatActivity {
         int [] allumes = new int[finNbBloc-departNbBloc+1];
     }
 
-    public int[] etape(int[] allumes){
-
+    public int[] etapeOrdi(int[] allumes, int[] possible){
+        Random rand = new Random();
+        int indice = rand.nextInt(possible.length);
+        Arrays.fill(allumes,possible[indice]);
         return allumes;
+    }
+    public boolean etapeJoueur(int[] allumes, Button[] tabBoutons){
+
+        return true;
     }
 }

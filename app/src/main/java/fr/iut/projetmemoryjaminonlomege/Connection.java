@@ -22,8 +22,8 @@ public class Connection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connection);
 
-        mail = findViewById(R.id.id_input_mail_inscription);
-        password = findViewById(R.id.id_input_mdp_inscription);
+        mail = findViewById(R.id.id_input_email_connexion);
+        password = findViewById(R.id.id_input_password);
         connexion = findViewById(R.id.id_bouton_connexion);
         db = new SQLiteHelper(getApplicationContext());
 
