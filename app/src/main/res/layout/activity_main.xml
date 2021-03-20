@@ -61,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/id_bouton_regles"
+        android:id="@+id/main_id_bouton_regles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/regles"
@@ -78,7 +78,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <Button
-        android:id="@+id/id_bouton_connection"
+        android:id="@+id/main_id_bouton_connection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/connection"
@@ -88,7 +88,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <Button
-        android:id="@+id/id_bouton_inscription"
+        android:id="@+id/main_id_bouton_inscription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/inscription"

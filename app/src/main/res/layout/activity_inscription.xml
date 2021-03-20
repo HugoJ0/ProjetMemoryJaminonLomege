@@ -157,11 +157,10 @@
         app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/inscription_id_bouton_retour"
         android:layout_width="38dp"
         android:layout_height="33dp"
         android:layout_marginStart="16dp"
-        android:text="Button"
         app:icon="@drawable/abc_vector_test"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="parent"

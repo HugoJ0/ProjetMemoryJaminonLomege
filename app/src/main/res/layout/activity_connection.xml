@@ -7,17 +7,14 @@
     tools:context=".Connection">
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/connection_id_bouton_retour"
         android:layout_width="38dp"
         android:layout_height="33dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text="Button"
+        android:layout_marginStart="8dp"
         app:icon="@drawable/abc_vector_test"
-        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
