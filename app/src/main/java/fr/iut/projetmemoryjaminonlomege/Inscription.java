@@ -3,6 +3,7 @@ package fr.iut.projetmemoryjaminonlomege;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ public class Inscription extends AppCompatActivity {
     Button retour;
     Button inscription;
     SQLiteHelper db;
+    EditText pseudo;
     EditText FirstName;
     EditText LastName;
     EditText mail;
@@ -24,11 +26,20 @@ public class Inscription extends AppCompatActivity {
 
 
 
+    public static String pse;
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String TEXT = "text";
+
+    private static String ps;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
 
+        pseudo = findViewById(R.id.id_input_pseudo);
         mail = findViewById(R.id.id_input_mail_inscription);
         password = findViewById(R.id.id_input_mdp_inscription);
         FirstName = findViewById(R.id.id_input_nom);
@@ -42,7 +53,8 @@ public class Inscription extends AppCompatActivity {
         inscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (db.addJoueur(mail.getText().toString(),password.getText().toString(),FirstName.getText().toString(),LastName.getText().toString(),genre.getText().toString(),dateNais.getText().toString(),0)){
+                if (db.addJoueur(pseudo.getText().toString(),mail.getText().toString(),password.getText().toString(),FirstName.getText().toString(),LastName.getText().toString(),genre.getText().toString(),dateNais.getText().toString(),0)){
+                    saveData();
                     Intent intent = new Intent (Inscription.this,Menu.class);
                     startActivity(intent);
                 }
@@ -63,4 +75,23 @@ public class Inscription extends AppCompatActivity {
             }
         });
     }
+
+    protected void saveData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(TEXT,pseudo.getText().toString());
+        editor.apply();
+    }
+
+    protected void loadData(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+        ps = sharedPreferences.getString(TEXT,"");
+        this.pse = ps;
+    }
+
+    public static String getPse() {
+        return pse;
+    }
+
 }

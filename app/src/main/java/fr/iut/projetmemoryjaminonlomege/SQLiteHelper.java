@@ -13,7 +13,7 @@ import java.sql.Date;
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     public static String BDD_NAME= "ColorMemoryBDD", TABLE_NAME ="Joueur",ID="id";
-    public static String MAIL = "mail", PASSWORD="password",FIRSTNAME = "prenom", LASTNAME = "nom", GENRE = "genre", DATE_NAISSANCE = "dateNais", SCORE = "score";
+    public static String PSEUDO = "pseudo",MAIL = "mail", PASSWORD="password",FIRSTNAME = "prenom", LASTNAME = "nom", GENRE = "genre", DATE_NAISSANCE = "dateNais", SCORE = "score";
 
 
     public SQLiteHelper(@Nullable Context context) {
@@ -25,6 +25,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         String sql =
                     "CREATE TABLE " + TABLE_NAME + " (" +
                             ID+" INTEGER PRIMARY KEY AUTOINCREMENT," +
+                            PSEUDO + " TEXT," +
                             MAIL + " TEXT," +
                             PASSWORD + " TEXT," +
                             FIRSTNAME + " TEXT," +
@@ -43,9 +44,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    boolean addJoueur(String mail, String password, String prenom, String nom, String genre, String dateNais, int score){
+    boolean addJoueur(String pseudo,String mail, String password, String prenom, String nom, String genre, String dateNais, int score){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues data = new ContentValues();
+        data.put(PSEUDO,pseudo);
         data.put(MAIL,mail);
         data.put(PASSWORD,password);
         data.put(FIRSTNAME,prenom);
@@ -71,5 +73,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
         else
             return false;
+    }
+
+    int affScore(String pseudo){
+        int score;
+        SQLiteDatabase db=this.getReadableDatabase();
+        String sql="SELECT score FROM Joueur WHERE pseudo='"+pseudo+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        cursor.moveToLast();
+        if(!cursor.isAfterLast()){
+            score = cursor.getInt(0);
+            return score;
+        }
+        else
+            return 0;
+
+
     }
 }

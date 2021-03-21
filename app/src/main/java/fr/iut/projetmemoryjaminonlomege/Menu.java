@@ -12,10 +12,13 @@ public class Menu extends AppCompatActivity {
 
     TextView nom,score;
     Button classement, nouvellePartie, profil, deconnexion, continuer;
+    SQLiteHelper db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
 
         nom=findViewById(R.id.id_textview_username);
         score=findViewById(R.id.id_textview_score);
@@ -24,6 +27,11 @@ public class Menu extends AppCompatActivity {
         profil=findViewById(R.id.id_bouton_profil);
         deconnexion=findViewById(R.id.id_bouton_deconnection);
         continuer=findViewById(R.id.id_bouton_continuer);
+
+        db = new SQLiteHelper(getApplicationContext());
+
+        score.setText(db.affScore(Inscription.getPse()));
+
 
         classement.setOnClickListener(new View.OnClickListener() {
             @Override
