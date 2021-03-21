@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ChoixMode extends AppCompatActivity {
 
@@ -24,36 +25,56 @@ public class ChoixMode extends AppCompatActivity {
         facile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(1);
-                finish();
+                Intent intent = new Intent(ChoixMode.this,Niveau1.class);
+
+                Bundle bundle=new Bundle();
+                bundle.putInt("nbDepartBloc",1);
+                bundle.putInt("nbFinBloc",10);
+                bundle.putInt("vies",2);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
             }
         });
         difficile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(2);
-                finish();
+                Intent intent = new Intent(ChoixMode.this,Niveau1.class);
+
+                Bundle bundle=new Bundle();
+                bundle.putInt("nbDepartBloc",3);
+                bundle.putInt("nbFinBloc",15);
+                bundle.putInt("vies",2);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
             }
         });
         expert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(3);
-                finish();
+                Intent intent = new Intent(ChoixMode.this,Niveau1.class);
+
+                Bundle bundle=new Bundle();
+                bundle.putInt("nbDepartBloc",3);
+                bundle.putInt("nbFinBloc",20);
+                bundle.putInt("vies",3);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
             }
         });
         chrono.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(4);
-                finish();
+                Toast.makeText(ChoixMode.this, "Indisponible pour le moment", Toast.LENGTH_SHORT).show();
             }
         });
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(5);
-                finish();
+                Intent intent = new Intent(ChoixMode.this,Menu.class);
+                startActivity(intent);
             }
         });
 

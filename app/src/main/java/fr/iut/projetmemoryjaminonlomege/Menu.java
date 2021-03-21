@@ -42,7 +42,7 @@ public class Menu extends AppCompatActivity {
         nouvellePartie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Jeux.class);
+                Intent intent = new Intent(Menu.this, ChoixMode.class);
                 startActivity(intent);
             }
         });
