@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class Menu extends AppCompatActivity {
 
     TextView nom,score;
-    Button classement, nouvellePartie, profil, deconnection, continuer;
+    Button classement, nouvellePartie, profil, deconnexion, continuer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,7 @@ public class Menu extends AppCompatActivity {
         classement=findViewById(R.id.id_bouton_classement);
         nouvellePartie=findViewById(R.id.id_bouton_nouvellePartie);
         profil=findViewById(R.id.id_bouton_profil);
-        deconnection=findViewById(R.id.id_bouton_deconnection);
+        deconnexion=findViewById(R.id.id_bouton_deconnection);
         continuer=findViewById(R.id.id_bouton_continuer);
 
         classement.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +43,14 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Menu.this, Jeux.class);
+                startActivity(intent);
+            }
+        });
+
+        deconnexion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent  (Menu.this,MainActivity.class);
                 startActivity(intent);
             }
         });
