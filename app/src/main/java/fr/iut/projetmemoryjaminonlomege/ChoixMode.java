@@ -3,6 +3,7 @@ package fr.iut.projetmemoryjaminonlomege;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,6 @@ public class ChoixMode extends AppCompatActivity {
         expert=findViewById(R.id.id_bouton_expert);
         chrono=findViewById(R.id.id_bouton_chrono);
         retour=findViewById(R.id.id_bouton_retour);
-
         facile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +56,7 @@ public class ChoixMode extends AppCompatActivity {
                 Intent intent = new Intent(ChoixMode.this,Niveau1.class);
 
                 Bundle bundle=new Bundle();
-                bundle.putInt("nbDepartBloc",3);
+                bundle.putInt("nbDepartBloc",5);
                 bundle.putInt("nbFinBloc",20);
                 bundle.putInt("vies",3);
                 intent.putExtras(bundle);
