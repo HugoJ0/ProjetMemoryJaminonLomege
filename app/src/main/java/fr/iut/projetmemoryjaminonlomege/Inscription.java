@@ -43,7 +43,7 @@ public class Inscription extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (db.addJoueur(mail.getText().toString(),password.getText().toString(),FirstName.getText().toString(),LastName.getText().toString(),genre.getText().toString(),dateNais.getText().toString(),0)){
-                    Intent intent = new Intent (Inscription.this,MainActivity.class);
+                    Intent intent = new Intent (Inscription.this,Menu.class);
                     startActivity(intent);
                 }
                 else{
