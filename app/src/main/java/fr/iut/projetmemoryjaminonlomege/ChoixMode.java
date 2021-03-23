@@ -31,6 +31,7 @@ public class ChoixMode extends AppCompatActivity {
                 bundle.putInt("nbDepartBloc",1);
                 bundle.putInt("nbFinBloc",10);
                 bundle.putInt("vies",2);
+                bundle.putDouble("poids",1);
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -45,6 +46,7 @@ public class ChoixMode extends AppCompatActivity {
                 bundle.putInt("nbDepartBloc",3);
                 bundle.putInt("nbFinBloc",15);
                 bundle.putInt("vies",2);
+                bundle.putDouble("poids",1.5);
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -53,12 +55,13 @@ public class ChoixMode extends AppCompatActivity {
         expert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChoixMode.this,Niveau1.class);
+                Intent intent = new Intent(ChoixMode.this,Niveau7.class);
 
                 Bundle bundle=new Bundle();
                 bundle.putInt("nbDepartBloc",5);
                 bundle.putInt("nbFinBloc",20);
                 bundle.putInt("vies",3);
+                bundle.putDouble("poids",3);
                 intent.putExtras(bundle);
 
                 startActivity(intent);

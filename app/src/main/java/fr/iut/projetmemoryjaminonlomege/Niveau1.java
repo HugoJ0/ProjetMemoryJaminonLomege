@@ -3,41 +3,79 @@ package fr.iut.projetmemoryjaminonlomege;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Niveau1 extends AppCompatActivity {
-    int vies, nbDepartBloc, nbFinBloc;
-    Button couleur1,couleur2,couleur3,couleur4,retour;
-    int [] tabIndice;
-    int tabVerif[], tabJoueur[];
+
+    Button rouge,vert,bleu,jaune;
+    Button start;
+    Button retour;
+    List<Integer> ordi;
+    List<Button> boutons;
+    int vies,viesRestantes, nbDepartBloc, nbFinBloc,etape;
+    int position = 0;
+    boolean vivant,recommenceEtape;
+    double score,poids;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_niveau1);
 
+        boutons=new ArrayList<Button>();
+        recupererBoutons();
+        activerBoutons(false);
+
         Intent intent=getIntent();
         Bundle bundle=intent.getExtras();
         vies=bundle.getInt("vies");
+        viesRestantes=vies;
+        vivant=true;
         nbDepartBloc=bundle.getInt("nbDepartBloc");
         nbFinBloc=bundle.getInt("nbFinBloc");
-        couleur1=findViewById(R.id.id_bouton_couleur_1);
-        couleur2=findViewById(R.id.id_bouton_couleur_2);
-        couleur3=findViewById(R.id.id_bouton_couleur_3);
-        couleur4=findViewById(R.id.id_bouton_couleur_4);
-        retour=findViewById(R.id.id_bouton_retour);
-        tabIndice=new int[]{1,2,3,4};
-        tabVerif=new int[nbFinBloc-nbDepartBloc+1];
-        desactiverBoutons();
-        etapeOrdiDepart();
+        poids=bundle.getDouble("poids");
+        etape=nbDepartBloc;
+        ordi= new ArrayList<Integer>();
+        recommenceEtape=false;
+
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                start.setClickable(false);
+                start.setAlpha(0.5f);
+                etapeOrdi();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        activerBoutons(true);
+                        int i=1;
+                        for (final Button bouton : boutons) {
+                            final int indiceBouton=i;
+                            bouton.setOnClickListener(new View.OnClickListener() {
+
+                                @Override
+                                public void onClick(View view) {
+                                    verifieBouton(indiceBouton);
+                                }
+
+                            });
+                            i++;
+                        }
+                            }
+                },1000*etape+1000);
+            }
+        });
 
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,110 +86,176 @@ public class Niveau1 extends AppCompatActivity {
         });
     }
 
-    protected void activerBoutons(){
-        couleur1.setClickable(true);
-        couleur2.setClickable(true);
-        couleur3.setClickable(true);
-        couleur4.setClickable(true);
-    }
-    protected void desactiverBoutons(){
-        couleur1.setClickable(false);
-        couleur2.setClickable(false);
-        couleur3.setClickable(false);
-        couleur4.setClickable(false);
+    private void recupererBoutons() {
+        rouge = findViewById(R.id.id_bouton_couleur_1);
+        vert = findViewById(R.id.id_bouton_couleur_2);
+        bleu = findViewById(R.id.id_bouton_couleur_3);
+        jaune = findViewById(R.id.id_bouton_couleur_4);
+        start = findViewById(R.id.id_bouton_start);
+        retour=findViewById(R.id.id_bouton_retour);
+        boutons.add(rouge);
+        boutons.add(vert);
+        boutons.add(bleu);
+        boutons.add(jaune);
+
     }
 
-    protected void etapeOrdi(){
-        Random rand = new Random();
-        int ind = rand.nextInt(tabIndice.length);
-        for(int i=0; i < tabVerif.length; i++)
-            if(tabVerif[i] == 0) {
-                tabVerif[i] = tabIndice[ind];
-                break;
-            }
-        Handler handler = new Handler();
+    public void etapeOrdi() {
+        if(!recommenceEtape)
+            rand();
+        recommenceEtape=false;
         int temps=1;
-        for(int i : tabVerif){
-            Toast.makeText(Niveau1.this, "test "+i + "temps "+temps, Toast.LENGTH_SHORT).show();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if(i==1){
-                        couleur1.setText("ICI");
-                    }
-                    if(i==2){
-                        couleur2.setText("ICI");
-                    }
-                    if(i==3){
-                        couleur3.setText("ICI");
-                    }
-                    if(i==4){
-                        couleur4.setText("ICI");
-                    }
-                }
-            }, 1000*temps);
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    couleur1.setText("");
-                    couleur2.setText("");
-                    couleur3.setText("");
-                    couleur4.setText("");
-                }
-            }, 1000*temps+500);
-            temps++;
-            if(i==0){
-                break;
-            }
-        }
-    }
-
-    protected void etapeOrdiDepart(){
-        for(int j=0;j<nbDepartBloc;j++) {
-            Random rand = new Random();
-            int ind = rand.nextInt(tabIndice.length);
-            for(int i=0; i < tabVerif.length; i++)
-                if(tabVerif[i] == 0) {
-                    tabVerif[i] = tabIndice[ind];
-                    break;
-                }
-        }
         Handler handler = new Handler();
-        int temps=1;
-        for(int i : tabVerif){
-            Toast.makeText(Niveau1.this, "test "+i + "temps "+temps, Toast.LENGTH_SHORT).show();
+        for(int choix : ordi) {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if(i==1){
-                        couleur1.setText("ICI");
-                    }
-                    if(i==2){
-                        couleur2.setText("ICI");
-                    }
-                    if(i==3){
-                        couleur3.setText("ICI");
-                    }
-                    if(i==4){
-                        couleur4.setText("ICI");
+                    switch (choix) {
+                        case 1:
+                            colorHighlight(rouge);
+                            break;
+                        case 2:
+                            colorHighlight(vert);
+                            break;
+                        case 3:
+                            colorHighlight(bleu);
+                            break;
+                        case 4:
+                            colorHighlight(jaune);
+                            break;
                     }
                 }
-            }, 1000*temps);
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    couleur1.setText("");
-                    couleur2.setText("");
-                    couleur3.setText("");
-                    couleur4.setText("");
-                }
-            }, 1000*temps+500);
+            },1000*temps);
             temps++;
-            if(i==0){
-                break;
+        }
+    }
+
+    private void rand(){
+        Random choixOrdi = new Random();
+        int choix;
+        if(etape==nbDepartBloc){
+            for(int i=0;i<nbDepartBloc;i++){
+                choix = choixOrdi.nextInt(3);
+                choix++;
+                ordi.add(choix);
+            }
+        }else{
+            choix = choixOrdi.nextInt(3);
+            choix++;
+            ordi.add(choix);
+        }
+        etape++;
+    }
+
+    private void colorHighlight(Button button) {
+
+        final Button b = button;
+
+        b.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                b.setAlpha(0.5f);
+            }
+
+        }, 0);
+        b.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                b.setAlpha(0.75f);
+            }
+        }, 50);
+        b.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                b.setAlpha(1f);
+            }
+        }, 100);
+        b.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                b.setAlpha(0.75f);
+            }
+        }, 250);
+        b.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                b.setAlpha(0.5f);
+            }
+        }, 300);
+    }
+
+    private void activerBoutons(boolean bool){
+        for (final Button bouton : boutons) {
+            bouton.setClickable(bool);
+        }
+        if(bool){
+            for (final Button bouton : boutons) {
+                bouton.setAlpha(1f);
+            }
+        }else{
+            for (final Button bouton : boutons) {
+                bouton.setAlpha(0.5f);
             }
         }
     }
 
+    private void verifieBouton(int indiceBouton) {
+        //verif si game a start et non mort
+            //Si la couleur bonne
+            if (indiceBouton == ordi.get(position)) {
+                //bonne couleur : possition+1. Ajout de point au score et affiche le score
+                position++;
+                // score += 10;
+                // score_value.setText("SCORE: " + score);
+                Toast.makeText(Niveau1.this,"Bonne couleur! etape : "+etape+" position "+position, Toast.LENGTH_SHORT).show();
+            } else {
+                //sinon mauvaise couleur vivant = faux (on meurt)
+                Toast.makeText(Niveau1.this,"Mauvaise couleur", Toast.LENGTH_SHORT).show();
+                viesRestantes--;
+                recommenceEtape=true;
+                if (viesRestantes <= 0)
+                    vivant = false;
+            }
+            if(etape-1==position||!vivant||recommenceEtape){
+                nouvelleEtape();
+            }
+    }
+
+    private void nouvelleEtape(){
+        if(vivant){
+            if(etape>nbFinBloc){
+                score=1*poids;
+                //Ajouter a score a la bdd
+                Toast.makeText(Niveau1.this,"Bravo! Vous avez passer le niveau 1, vous gagnez "+score+" points", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Niveau1.this,Niveau2.class);
+
+                Bundle bundle=new Bundle();
+                bundle.putInt("nbDepartBloc",nbDepartBloc);
+                bundle.putInt("nbFinBloc",nbFinBloc);
+                bundle.putInt("vies",vies);
+                bundle.putDouble("poids",poids);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }else{
+                position=0;
+                start.setClickable(true);
+                start.setAlpha(1f);
+                activerBoutons(false);
+            }
+        }else{
+            Toast.makeText(Niveau1.this,"Perdu, vous recommencez le niveau!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Niveau1.this,Niveau1.class);
+
+            Bundle bundle=new Bundle();
+            bundle.putInt("nbDepartBloc",nbDepartBloc);
+            bundle.putInt("nbFinBloc",nbFinBloc);
+            bundle.putInt("vies",vies);
+            bundle.putDouble("poids",poids);
+            intent.putExtras(bundle);
+
+            startActivity(intent);
+        }
+    }
 
 }

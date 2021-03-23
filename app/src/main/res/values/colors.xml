@@ -11,4 +11,9 @@
     <color name="green">#19FF00</color>
     <color name="blue">#002AFF</color>
     <color name="yellow">#FFE500</color>
+    <color name="orange">#FF5900</color>
+    <color name="pink">#FF00D5</color>
+    <color name="cyan">#00E2FF</color>
+    <color name="brown">#753A10</color>
+    <color name="darkgreen">#017829</color>
 </resources>
