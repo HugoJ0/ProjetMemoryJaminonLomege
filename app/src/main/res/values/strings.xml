@@ -30,4 +30,8 @@
     <string name="niveau_6">Niveau 6</string>
     <string name="niveau_7">Niveau 7</string>
     <string name="start">Start</string>
+    <string name="avatar">Avatar</string>
+    <string name="email">Email :</string>
+    <string name="date_de_naissance">Date de naissance :</string>
+    <string name="sexe">Sexe :</string>
 </resources>
