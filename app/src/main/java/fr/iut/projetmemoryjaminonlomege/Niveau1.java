@@ -200,16 +200,9 @@ public class Niveau1 extends AppCompatActivity {
     }
 
     private void verifieBouton(int indiceBouton) {
-        //verif si game a start et non mort
-            //Si la couleur bonne
             if (indiceBouton == ordi.get(position)) {
-                //bonne couleur : possition+1. Ajout de point au score et affiche le score
                 position++;
-                // score += 10;
-                // score_value.setText("SCORE: " + score);
-                Toast.makeText(Niveau1.this,"Bonne couleur! etape : "+etape+" position "+position, Toast.LENGTH_SHORT).show();
             } else {
-                //sinon mauvaise couleur vivant = faux (on meurt)
                 Toast.makeText(Niveau1.this,"Mauvaise couleur", Toast.LENGTH_SHORT).show();
                 viesRestantes--;
                 recommenceEtape=true;
