@@ -52,8 +52,10 @@ public class Inscription extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (db.addJoueur(pseudo.getText().toString(),mail.getText().toString(),password.getText().toString(),FirstName.getText().toString(),LastName.getText().toString(),genre.getText().toString(),dateNais.getText().toString(),0)){
-                    saveData();
                     Intent intent = new Intent (Inscription.this,Menu.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("mail",mail.getText().toString());
+                    intent.putExtras(bundle);
                     startActivity(intent);
                 }
                 else{
@@ -74,11 +76,5 @@ public class Inscription extends AppCompatActivity {
         });
     }
 
-    protected void saveData() {
-        SharedPreferences prefs = getApplicationContext (). getSharedPreferences ("pseudo", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit ();
-        editor.putString(TEXT,pseudo.getText().toString());
-        editor.apply();
-    }
 
 }

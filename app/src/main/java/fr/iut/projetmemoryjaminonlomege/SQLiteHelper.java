@@ -44,6 +44,18 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+    boolean verifMail(String mail){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql="SELECT * FROM Joueur WHERE mail='"+mail+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        if (cursor.moveToFirst()){
+            return true;
+        }
+        else
+            return false;
+    }
+
     boolean addJoueur(String pseudo,String mail, String password, String prenom, String nom, String genre, String dateNais, int score){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues data = new ContentValues();

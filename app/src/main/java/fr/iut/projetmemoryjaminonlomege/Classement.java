@@ -21,6 +21,11 @@ public class Classement extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Classement.this, Menu.class);
+                Bundle bundle=new Bundle();
+                Intent intent2=getIntent();
+                Bundle bundle2=intent2.getExtras();
+                bundle.putString("mail", bundle2.getString("mail"));
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
