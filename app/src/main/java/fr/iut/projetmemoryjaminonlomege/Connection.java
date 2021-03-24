@@ -33,9 +33,7 @@ public class Connection extends AppCompatActivity {
                 if (db.connection(mail.getText().toString(),password.getText().toString())){
                     Intent intent = new Intent(Connection.this,Menu.class);
                     Bundle bundle=new Bundle();
-                    Intent intent2=getIntent();
-                    Bundle bundle2=intent2.getExtras();
-                    bundle.putString("mail", bundle2.getString("mail"));
+                    bundle.putString("mail", mail.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
@@ -50,11 +48,6 @@ public class Connection extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Connection.this, MainActivity.class);
-                Bundle bundle=new Bundle();
-                Intent intent2=getIntent();
-                Bundle bundle2=intent2.getExtras();
-                bundle.putString("mail", bundle2.getString("mail"));
-                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
