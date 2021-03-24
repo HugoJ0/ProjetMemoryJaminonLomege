@@ -86,6 +86,11 @@ public class Niveau4 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Niveau4.this, Menu.class);
+                Bundle bundle=new Bundle();
+                Intent intent2=getIntent();
+                Bundle bundle2=intent2.getExtras();
+                bundle.putString("mail", bundle2.getString("mail"));
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
@@ -237,6 +242,8 @@ public class Niveau4 extends AppCompatActivity {
         if(vivant){
             if(etape>nbFinBloc){
                 score=1*poids;
+                Intent intent2=getIntent();
+                Bundle bundle2=intent2.getExtras();
                 //ajouter score a la bdd
                 Toast.makeText(Niveau4.this,"Bravo! Vous avez passer le niveau 4, vous gagnez "+score+" points", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Niveau4.this,Niveau5.class);
@@ -246,6 +253,7 @@ public class Niveau4 extends AppCompatActivity {
                 bundle.putInt("nbFinBloc",nbFinBloc);
                 bundle.putInt("vies",vies);
                 bundle.putDouble("poids",poids);
+                bundle.putString("mail", bundle2.getString("mail"));
                 intent.putExtras(bundle);
 
                 startActivity(intent);
@@ -266,6 +274,9 @@ public class Niveau4 extends AppCompatActivity {
             bundle.putInt("nbFinBloc",nbFinBloc);
             bundle.putInt("vies",vies);
             bundle.putDouble("poids",poids);
+            Intent intent2=getIntent();
+            Bundle bundle2=intent2.getExtras();
+            bundle.putString("mail", bundle2.getString("mail"));
             intent.putExtras(bundle);
 
             startActivity(intent);
