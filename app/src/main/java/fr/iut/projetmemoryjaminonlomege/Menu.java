@@ -30,7 +30,7 @@ public class Menu extends AppCompatActivity {
 
         db = new SQLiteHelper(getApplicationContext());
 
-        score.setText(db.affScore(Inscription.getPse()));
+        //score.setText(db.affScore(Inscription.getPs()));
 
 
         classement.setOnClickListener(new View.OnClickListener() {
