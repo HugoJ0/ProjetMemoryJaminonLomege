@@ -34,4 +34,6 @@
     <string name="email">Email :</string>
     <string name="date_de_naissance">Date de naissance :</string>
     <string name="sexe">Sexe :</string>
+    <string name="etape">Etape :</string>
+    <string name="vies">Vies :</string>
 </resources>

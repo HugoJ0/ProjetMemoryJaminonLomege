@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Niveau6 extends AppCompatActivity {
     Button rouge,vert,bleu,jaune,orange,pink,cyan,brown,darkgreen;
     Button start;
     Button retour;
+    TextView textview_vies, textview_etape;
     List<Integer> ordi;
     List<Button> boutons;
     int vies,viesRestantes, nbDepartBloc, nbFinBloc,etape;
@@ -45,6 +47,11 @@ public class Niveau6 extends AppCompatActivity {
         etape=nbDepartBloc;
         ordi= new ArrayList<Integer>();
         recommenceEtape=false;
+
+        textview_vies=findViewById(R.id.id_textview_vies);
+        textview_etape=findViewById(R.id.id_textview_etape);
+        textview_etape.setText(etape+" / "+nbFinBloc);
+        textview_vies.setText(viesRestantes+" / "+vies);
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -257,6 +264,8 @@ public class Niveau6 extends AppCompatActivity {
                 start.setClickable(true);
                 start.setAlpha(1f);
                 activerBoutons(false);
+                textview_etape.setText(etape+" / "+nbFinBloc);
+                textview_vies.setText(viesRestantes+" / "+vies);
             }
         }else{
             Toast.makeText(Niveau6.this,"Perdu, vous recommencez le niveau!", Toast.LENGTH_SHORT).show();
