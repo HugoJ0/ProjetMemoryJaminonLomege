@@ -51,15 +51,19 @@ public class Inscription extends AppCompatActivity {
         inscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (db.addJoueur(pseudo.getText().toString(),mail.getText().toString(),password.getText().toString(),FirstName.getText().toString(),LastName.getText().toString(),genre.getText().toString(),dateNais.getText().toString(),0)){
-                    Intent intent = new Intent (Inscription.this,Menu.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("mail",mail.getText().toString());
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+                if (db.verifMail(mail.getText().toString())) {
+                    if (db.addJoueur(pseudo.getText().toString(), mail.getText().toString(), password.getText().toString(), FirstName.getText().toString(), LastName.getText().toString(), genre.getText().toString(), dateNais.getText().toString(), 0)) {
+                        Intent intent = new Intent(Inscription.this, Menu.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("mail", mail.getText().toString());
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(Inscription.this, "Erreur lors de l'inscription !", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else{
-                    Toast.makeText(Inscription.this,"Erreur lors de l'inscription !", Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(Inscription.this,"Adresse mail déjà utilisée.",Toast.LENGTH_SHORT).show();
                 }
             }
         });

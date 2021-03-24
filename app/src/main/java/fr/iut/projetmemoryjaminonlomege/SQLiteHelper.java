@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -32,7 +33,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                             LASTNAME + " TEXT," +
                             GENRE + " TEXT," +
                             DATE_NAISSANCE + " DATE," +
-                            SCORE + " INTEGER)";
+                            SCORE + " DOUBLE)";
         db.execSQL(sql);
 
     }
@@ -50,13 +51,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         String sql="SELECT * FROM Joueur WHERE mail='"+mail+"'";
         Cursor cursor = db.rawQuery(sql,null);
         if (cursor.moveToFirst()){
-            return true;
+            return false;
         }
         else
-            return false;
+            return true;
     }
 
-    boolean addJoueur(String pseudo,String mail, String password, String prenom, String nom, String genre, String dateNais, int score){
+    boolean addJoueur(String pseudo,String mail, String password, String prenom, String nom, String genre, String dateNais, double score){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues data = new ContentValues();
         data.put(PSEUDO,pseudo);
@@ -87,8 +88,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    int affScore(String mail){
-        int score;
+    double affScore(String mail){
+        double score;
         SQLiteDatabase db=this.getReadableDatabase();
         String sql="SELECT score FROM Joueur WHERE mail='"+mail+"'";
         Cursor cursor = db.rawQuery(sql,null);
@@ -99,7 +100,24 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
         else
             return 0;
+    }
 
-
+    String[][] affClassement(){
+        String[][] tab = new String[10][2];
+        String pseudo;
+        int indice = 0;
+        double score;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT pseudo,score FROM joueur ORDER BY score DESC LIMIT 10 ";
+        Cursor cursor = db.rawQuery(sql,null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            pseudo = cursor.getString(cursor.getColumnIndex("pseudo"));
+            tab [indice][0] = pseudo;
+            score = cursor.getDouble(cursor.getColumnIndex("score"));
+            tab [indice][1] = "" + score;
+            cursor.moveToNext();
+        }
+        return tab;
     }
 }
