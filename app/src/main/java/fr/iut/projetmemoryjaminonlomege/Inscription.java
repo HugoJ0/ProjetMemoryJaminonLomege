@@ -26,8 +26,6 @@ public class Inscription extends AppCompatActivity {
 
 
 
-    public static String pse;
-
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String TEXT = "text";
 
@@ -77,21 +75,10 @@ public class Inscription extends AppCompatActivity {
     }
 
     protected void saveData() {
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
+        SharedPreferences prefs = getApplicationContext (). getSharedPreferences ("pseudo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit ();
         editor.putString(TEXT,pseudo.getText().toString());
         editor.apply();
-    }
-
-    protected void loadData(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
-        ps = sharedPreferences.getString(TEXT,"");
-        this.pse = ps;
-    }
-
-    public static String getPse() {
-        return pse;
     }
 
 }

@@ -75,10 +75,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    int affScore(String pseudo){
+    int affScore(String mail){
         int score;
         SQLiteDatabase db=this.getReadableDatabase();
-        String sql="SELECT score FROM Joueur WHERE pseudo='"+pseudo+"'";
+        String sql="SELECT score FROM Joueur WHERE mail='"+mail+"'";
         Cursor cursor = db.rawQuery(sql,null);
         cursor.moveToLast();
         if(!cursor.isAfterLast()){
