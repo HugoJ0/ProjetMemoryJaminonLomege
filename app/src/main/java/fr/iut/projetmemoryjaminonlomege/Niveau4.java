@@ -241,7 +241,7 @@ public class Niveau4 extends AppCompatActivity {
     private void nouvelleEtape(){
         if(vivant){
             if(etape>nbFinBloc){
-                score=1*poids;
+                score=4*poids;
                 Intent intent2=getIntent();
                 Bundle bundle2=intent2.getExtras();
                 //ajouter score a la bdd

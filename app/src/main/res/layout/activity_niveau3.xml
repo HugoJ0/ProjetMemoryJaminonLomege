@@ -118,7 +118,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline26" />
 
     <Button
-        android:id="@+id/button32"
+        android:id="@+id/id_bouton_couleur_6"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

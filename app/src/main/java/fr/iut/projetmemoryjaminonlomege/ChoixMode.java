@@ -61,7 +61,7 @@ public class ChoixMode extends AppCompatActivity {
         expert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChoixMode.this,Niveau7.class);
+                Intent intent = new Intent(ChoixMode.this,Niveau1.class);
 
                 Bundle bundle=new Bundle();
                 bundle.putInt("nbDepartBloc",5);
