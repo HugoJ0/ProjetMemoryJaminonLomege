@@ -95,7 +95,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(sql,null);
         cursor.moveToLast();
         if(!cursor.isAfterLast()){
-            score = cursor.getInt(0);
+            score = cursor.getDouble(0);
             return score;
         }
         else
@@ -173,6 +173,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         return tab;
+    }
+
+    void UpdateScore(String mail, double scoreDuNiveau){
+        double ancienScore= affScore(mail);
+        double nouveauScore=ancienScore+scoreDuNiveau;
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(SCORE,nouveauScore);
+        db.update(TABLE_NAME, values, MAIL + " = ?", new String[]{mail});
     }
 
 }

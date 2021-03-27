@@ -20,6 +20,7 @@ import java.util.Random;
 
 public class Niveau1 extends AppCompatActivity {
 
+    SQLiteHelper db;
     Button rouge,vert,bleu,jaune;
     Button start;
     Button retour;
@@ -35,6 +36,7 @@ public class Niveau1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_niveau1);
+
 
         boutons=new ArrayList<Button>();
         recupererBoutons();
@@ -234,7 +236,8 @@ public class Niveau1 extends AppCompatActivity {
                 score=1*poids;
                 Intent intent2=getIntent();
                 Bundle bundle2=intent2.getExtras();
-                //Ajouter a score a la bdd
+                db = new SQLiteHelper(getApplicationContext());
+                db.UpdateScore(bundle2.getString("mail"),score);
                 Toast.makeText(Niveau1.this,"Bravo! Vous avez passer le niveau 1, vous gagnez "+score+" points", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Niveau1.this,Niveau2.class);
 
