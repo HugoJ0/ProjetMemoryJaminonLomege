@@ -75,17 +75,17 @@
 
     <EditText
         android:id="@+id/id_input_prenom"
-        android:layout_width="144dp"
-        android:layout_height="43dp"
+        android:layout_width="147dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="Prénom"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toEndOf="@+id/id_input_nom"
         app:layout_constraintTop_toTopOf="@+id/guideline13"
-        app:layout_constraintVertical_bias="0.547" />
+        app:layout_constraintVertical_bias="0.69" />
 
     <EditText
         android:id="@+id/id_input_mail_inscription"
@@ -99,28 +99,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline14" />
 
-    <RadioButton
-        android:id="@+id/id_radiobouton_genre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:text="@string/homme"
-        app:layout_constraintBottom_toTopOf="@+id/guideline17"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline16"
-        app:layout_constraintVertical_bias="0.466" />
 
-    <RadioButton
-        android:id="@+id/id_radiobouton_genre"
-        android:layout_width="91dp"
-        android:layout_height="49dp"
-        android:text="@string/femme"
-        app:layout_constraintBottom_toTopOf="@+id/guideline17"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.746"
-        app:layout_constraintStart_toEndOf="@+id/id_radiobouton_genre"
-        app:layout_constraintTop_toTopOf="@+id/guideline16"
-        app:layout_constraintVertical_bias="0.448" />
+
+
+
 
     <EditText
         android:id="@+id/id_input_mdp_inscription"
@@ -135,7 +117,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline15"
         app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
+    <TextView
         android:id="@+id/id_input_datenaissance"
         android:layout_width="315dp"
         android:layout_height="41dp"
@@ -145,8 +127,10 @@
         android:inputType="date"
         app:layout_constraintBottom_toTopOf="@+id/guideline37"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline17" />
+        app:layout_constraintTop_toTopOf="@+id/guideline17"
+        app:layout_constraintVertical_bias="0.461" />
 
     <TextView
         android:id="@+id/id_textview_inscription"
@@ -188,4 +172,37 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.89" />
 
+    <RadioGroup
+        android:id="@+id/radioSex"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/guideline17"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline16"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_margin="8dp"
+            android:text="Homme"
+            app:layout_constraintBottom_toTopOf="@+id/guideline17"
+            app:layout_constraintEnd_toStartOf="@+id/radioFemale"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Femme"
+            app:layout_constraintBottom_toTopOf="@+id/guideline17"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline16" />
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

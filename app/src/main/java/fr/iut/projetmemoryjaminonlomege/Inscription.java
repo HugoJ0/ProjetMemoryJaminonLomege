@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,16 +11,19 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
 
 public class Inscription extends AppCompatActivity {
 
-    Button retour,inscription;
+    Button retour,inscription,sexe;
     SQLiteHelper db;
-    EditText pseudo,FirstName,LastName,mail,password,dateNais;
-    RadioButton genre;
+    EditText pseudo,FirstName,LastName,mail,password;
+    TextView dateNais;
+    RadioGroup genres;
 
 
 
@@ -30,14 +32,13 @@ public class Inscription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
-
         pseudo = findViewById(R.id.id_input_pseudo);
         mail = findViewById(R.id.id_input_mail_inscription);
         password = findViewById(R.id.id_input_mdp_inscription);
         FirstName = findViewById(R.id.id_input_nom);
         LastName = findViewById(R.id.id_input_prenom);
-        genre = findViewById(R.id.id_radiobouton_genre);
-        dateNais = (EditText)findViewById(R.id.id_input_datenaissance);
+        dateNais = (TextView) findViewById(R.id.id_input_datenaissance);
+        genres = findViewById(R.id.radioSex);
         dateNais.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -66,8 +67,11 @@ public class Inscription extends AppCompatActivity {
         inscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int selectedId = genres.getCheckedRadioButtonId();
+                sexe = (RadioButton) findViewById(selectedId);
+
                 if (db.verifMail(mail.getText().toString())) {
-                    if (db.addJoueur(pseudo.getText().toString(), mail.getText().toString(), password.getText().toString(), FirstName.getText().toString(), LastName.getText().toString(), genre.getText().toString(), dateNais.getText().toString(), 0)) {
+                    if (db.addJoueur(pseudo.getText().toString(), mail.getText().toString(), password.getText().toString(), FirstName.getText().toString(), LastName.getText().toString(), sexe.getText().toString(), dateNais.getText().toString(), 0)) {
                         Intent intent = new Intent(Inscription.this, Menu.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("mail", mail.getText().toString());
@@ -93,6 +97,7 @@ public class Inscription extends AppCompatActivity {
             }
         });
     }
+
 
 
 }
