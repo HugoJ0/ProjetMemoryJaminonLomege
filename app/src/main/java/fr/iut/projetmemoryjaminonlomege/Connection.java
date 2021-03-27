@@ -11,10 +11,8 @@ import android.widget.Toast;
 
 public class Connection extends AppCompatActivity {
 
-    Button retour;
-    Button connexion;
-    EditText mail;
-    EditText password;
+    Button retour,connexion;
+    EditText mail,password;
     SQLiteHelper db;
 
     @Override

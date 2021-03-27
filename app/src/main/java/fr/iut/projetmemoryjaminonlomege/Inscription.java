@@ -2,34 +2,28 @@ package fr.iut.projetmemoryjaminonlomege;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class Inscription extends AppCompatActivity {
 
-    Button retour;
-    Button inscription;
+    Button retour,inscription;
     SQLiteHelper db;
-    EditText pseudo;
-    EditText FirstName;
-    EditText LastName;
-    EditText mail;
-    EditText password;
+    EditText pseudo,FirstName,LastName,mail,password,dateNais;
     RadioButton genre;
-    EditText dateNais;
 
 
-
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String TEXT = "text";
-
-    private static String ps;
 
 
     @Override
@@ -43,7 +37,28 @@ public class Inscription extends AppCompatActivity {
         FirstName = findViewById(R.id.id_input_nom);
         LastName = findViewById(R.id.id_input_prenom);
         genre = findViewById(R.id.id_radiobouton_genre);
-        dateNais = findViewById(R.id.id_input_datenaissance);
+        dateNais = (EditText)findViewById(R.id.id_input_datenaissance);
+        dateNais.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentDate=Calendar.getInstance();
+                int annee = mcurrentDate.get(Calendar.YEAR);
+                int mois = mcurrentDate.get(Calendar.MONTH);
+                int jour = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog mDatePicker=new DatePickerDialog(Inscription.this, new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker datepicker, int selectAnnee, int selectMois, int selectJour) {
+                        Log.e("Date Selected", " Jour: " + selectJour  + "Mois: " + selectMois+ " Année: " + selectAnnee);
+                        dateNais.setText(selectJour + "/" + selectMois + "/" + selectAnnee);
+                    }
+                },annee, mois, jour);
+                mDatePicker.setTitle("Sélectionner une date");
+                mDatePicker.show();
+            }
+        });
+
+
         inscription = findViewById(R.id.id_bouton_inscription);
 
         db = new SQLiteHelper(getApplicationContext());
@@ -67,7 +82,6 @@ public class Inscription extends AppCompatActivity {
                 }
             }
         });
-
 
 
         retour=findViewById(R.id.inscription_id_bouton_retour);

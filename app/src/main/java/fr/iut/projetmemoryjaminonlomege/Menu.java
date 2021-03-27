@@ -12,6 +12,8 @@ public class Menu extends AppCompatActivity {
 
     TextView nom,score;
     Button classement, nouvellePartie, profil, deconnexion, continuer;
+    String mail;
+    String scoreStr;
     SQLiteHelper db;
 
     @Override
@@ -19,6 +21,9 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        Intent intent2=getIntent();
+        Bundle bundle2=intent2.getExtras();
+        mail = bundle2.getString("mail");
 
         nom=findViewById(R.id.id_textview_username);
         score=findViewById(R.id.id_textview_score);
@@ -30,7 +35,10 @@ public class Menu extends AppCompatActivity {
 
         db = new SQLiteHelper(getApplicationContext());
 
-        //score.setText(db.affScore(Inscription.getPs()));
+        nom.setText(db.affPseudo(mail));
+
+        scoreStr = String.valueOf(db.affScore(mail));
+        score.setText(scoreStr);
 
 
         classement.setOnClickListener(new View.OnClickListener() {
