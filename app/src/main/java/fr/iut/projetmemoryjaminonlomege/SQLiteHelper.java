@@ -122,19 +122,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return prenom;
     }
 
-    /* Fonction "inutile" puisqu'on utilise un bundle pour
-    String affMail(String mail){
-        String email;
-        SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT mail FROM Joueur WHERE mail='"+mail+"'";
-        Cursor cursor = db.rawQuery(sql,null);
-        cursor.moveToLast();
-        email = cursor.getString(0);
-        return email;
-    }
-
-     */
-
     String affPseudo(String mail){
         String pseudo;
         SQLiteDatabase db = this.getReadableDatabase();

@@ -129,25 +129,25 @@ public class Niveau4 extends AppCompatActivity {
                 public void run() {
                     switch (choix) {
                         case 1:
-                            colorHighlight(rouge);
+                            AllumageBouton(rouge);
                             break;
                         case 2:
-                            colorHighlight(vert);
+                            AllumageBouton(vert);
                             break;
                         case 3:
-                            colorHighlight(bleu);
+                            AllumageBouton(bleu);
                             break;
                         case 4:
-                            colorHighlight(jaune);
+                            AllumageBouton(jaune);
                             break;
                         case 5:
-                            colorHighlight(orange);
+                            AllumageBouton(orange);
                             break;
                         case 6:
-                            colorHighlight(pink);
+                            AllumageBouton(pink);
                             break;
                         case 7:
-                            colorHighlight(cyan);
+                            AllumageBouton(cyan);
                             break;
                     }
                 }
@@ -173,7 +173,7 @@ public class Niveau4 extends AppCompatActivity {
         etape++;
     }
 
-    private void colorHighlight(Button button) {
+    private void AllumageBouton(Button button) {
 
         final Button b = button;
 

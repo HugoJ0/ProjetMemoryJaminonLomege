@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Connection">
+    tools:context=".Connexion">
 
     <Button
-        android:id="@+id/connection_id_bouton_retour"
+        android:id="@+id/connexion_id_bouton_retour"
         android:layout_width="38dp"
         android:layout_height="33dp"
         android:layout_marginStart="8dp"
@@ -89,7 +89,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/connection"
+        android:text="@string/connexion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
         android:id="@+id/id_textview_connexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/connection"
+        android:text="@string/connexion"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="Mot de passe :"
+        android:text="@string/mot_de_passe"
         app:layout_constraintBaseline_toBaselineOf="@+id/id_input_password"
         app:layout_constraintEnd_toStartOf="@+id/id_input_password" />
 

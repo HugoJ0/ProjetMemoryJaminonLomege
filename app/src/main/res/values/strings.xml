@@ -2,11 +2,11 @@
     <string name="app_name">ProjetMemoryJaminonLomege</string>
     <string name="color_memory">Color Memory</string>
     <string name="regles">Regles</string>
-    <string name="connection">Connection</string>
+    <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
     <string name="profil">Profil</string>
     <string name="score">Score :</string>
-    <string name="deconnection">Deconnection</string>
+    <string name="deconnexion">Deconnexion</string>
     <string name="classement">Classement</string>
     <string name="nouvelle_partie">Nouvelle partie</string>
     <string name="continuer">Continuer</string>
@@ -36,4 +36,5 @@
     <string name="sexe">Sexe :</string>
     <string name="etape">Etape :</string>
     <string name="vies">Vies :</string>
+    <string name="mot_de_passe">Mot de passe :</string>
 </resources>

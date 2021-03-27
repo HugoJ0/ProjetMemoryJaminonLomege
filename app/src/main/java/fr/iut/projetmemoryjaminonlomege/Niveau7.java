@@ -134,34 +134,34 @@ public class Niveau7 extends AppCompatActivity {
                 public void run() {
                     switch (choix) {
                         case 1:
-                            colorHighlight(rouge);
+                            AllumageBouton(rouge);
                             break;
                         case 2:
-                            colorHighlight(vert);
+                            AllumageBouton(vert);
                             break;
                         case 3:
-                            colorHighlight(bleu);
+                            AllumageBouton(bleu);
                             break;
                         case 4:
-                            colorHighlight(jaune);
+                            AllumageBouton(jaune);
                             break;
                         case 5:
-                            colorHighlight(orange);
+                            AllumageBouton(orange);
                             break;
                         case 6:
-                            colorHighlight(pink);
+                            AllumageBouton(pink);
                             break;
                         case 7:
-                            colorHighlight(cyan);
+                            AllumageBouton(cyan);
                             break;
                         case 8:
-                            colorHighlight(brown);
+                            AllumageBouton(brown);
                             break;
                         case 9:
-                            colorHighlight(darkgreen);
+                            AllumageBouton(darkgreen);
                             break;
                         case 10:
-                            colorHighlight(black);
+                            AllumageBouton(black);
                             break;
                     }
                 }
@@ -187,7 +187,7 @@ public class Niveau7 extends AppCompatActivity {
         etape++;
     }
 
-    private void colorHighlight(Button button) {
+    private void AllumageBouton(Button button) {
 
         final Button b = button;
 

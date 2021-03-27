@@ -77,10 +77,10 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <Button
-        android:id="@+id/main_id_bouton_connection"
+        android:id="@+id/main_id_bouton_connexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/connection"
+        android:text="@string/connexion"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="parent"

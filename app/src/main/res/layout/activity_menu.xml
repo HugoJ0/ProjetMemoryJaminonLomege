@@ -76,10 +76,10 @@
         app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
     <Button
-        android:id="@+id/id_bouton_deconnection"
+        android:id="@+id/id_bouton_deconnexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/deconnection"
+        android:text="@string/deconnexion"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

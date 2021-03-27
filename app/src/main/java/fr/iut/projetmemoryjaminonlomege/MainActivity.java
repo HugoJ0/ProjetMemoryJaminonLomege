@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button connection,inscription, regles;
+    Button connexion,inscription, regles;
 
 
     @Override
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        connection=findViewById(R.id.main_id_bouton_connection);
+        connexion=findViewById(R.id.main_id_bouton_connexion);
         inscription=findViewById(R.id.main_id_bouton_inscription);
         regles=findViewById(R.id.main_id_bouton_regles);
 
@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        connection.setOnClickListener(new View.OnClickListener() {
+        connexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Connection.class);
+                Intent intent = new Intent(MainActivity.this, Connexion.class);
                 startActivity(intent);
             }
         });

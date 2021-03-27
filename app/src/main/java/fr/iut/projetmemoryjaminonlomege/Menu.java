@@ -30,7 +30,7 @@ public class Menu extends AppCompatActivity {
         classement=findViewById(R.id.id_bouton_classement);
         nouvellePartie=findViewById(R.id.id_bouton_nouvellePartie);
         profil=findViewById(R.id.id_bouton_profil);
-        deconnexion=findViewById(R.id.id_bouton_deconnection);
+        deconnexion=findViewById(R.id.id_bouton_deconnexion);
         continuer=findViewById(R.id.id_bouton_continuer);
 
         db = new SQLiteHelper(getApplicationContext());
