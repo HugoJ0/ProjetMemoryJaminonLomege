@@ -102,6 +102,60 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             return 0;
     }
 
+    String affNom(String mail){
+        String nom;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT nom FROM Joueur WHERE mail='"+mail+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        cursor.moveToLast();
+        nom = cursor.getString(0);
+        return nom;
+    }
+
+    String affPrenom(String mail){
+        String prenom;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT prenom FROM Joueur WHERE mail='"+mail+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        cursor.moveToLast();
+        prenom = cursor.getString(0);
+        return prenom;
+    }
+
+    /* Fonction "inutile" puisqu'on utilise un bundle pour
+    String affMail(String mail){
+        String email;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT mail FROM Joueur WHERE mail='"+mail+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        cursor.moveToLast();
+        email = cursor.getString(0);
+        return email;
+    }
+
+     */
+
+    String affPseudo(String mail){
+        String pseudo;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT pseudo FROM Joueur WHERE mail='"+mail+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        cursor.moveToLast();
+        pseudo = cursor.getString(0);
+        return pseudo;
+    }
+
+    String affGenre (String mail){
+        String genre;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT genre FROM Joueur WHERE mail='"+mail+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        cursor.moveToLast();
+        genre = cursor.getString(0);
+        return genre;
+    }
+
+
     String[][] affClassement(){
         String[][] tab = new String[10][2];
         String pseudo;
@@ -120,4 +174,5 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
         return tab;
     }
+
 }
