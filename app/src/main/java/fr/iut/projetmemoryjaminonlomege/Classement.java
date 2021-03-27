@@ -1,6 +1,8 @@
 package fr.iut.projetmemoryjaminonlomege;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +10,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Classement extends AppCompatActivity {
 
     Button retour;
     SQLiteHelper db;
     String[][] liste;
+    RecyclerView classementRecyclerView;
+    List<Joueur> listeJoueurs;
+    JoueurAdapter monJoueurAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +29,13 @@ public class Classement extends AppCompatActivity {
         db = new SQLiteHelper(getApplicationContext());
 
         liste = db.affClassement();
-        Toast.makeText(Classement.this, ""+liste[0][1], Toast.LENGTH_LONG).show();
+        initListe();
+        classementRecyclerView=findViewById(R.id.id_recyclerview_listeclassement);
+        monJoueurAdapter=new JoueurAdapter(listeJoueurs);
+
+        classementRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        classementRecyclerView.setAdapter(monJoueurAdapter);
+
 
         retour=findViewById(R.id.id_bouton_retour);
         retour.setOnClickListener(new View.OnClickListener() {
@@ -37,5 +51,17 @@ public class Classement extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void initListe(){
+        listeJoueurs=new ArrayList<Joueur>();
+        Joueur joueurParDefault = new Joueur();
+        listeJoueurs.add(joueurParDefault);
+        for(int i=1; i<=liste.length;i++){
+            if(liste[i-1][0]!=null){
+                Joueur unJoueur = new Joueur(liste[i-1][0], liste[i-1][1], ""+i);
+                listeJoueurs.add(unJoueur);
+            }
+        }
     }
 }
