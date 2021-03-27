@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class Profil extends AppCompatActivity {
 
     Button retour;
@@ -19,6 +21,7 @@ public class Profil extends AppCompatActivity {
     TextView prenom;
     TextView genre;
     TextView email;
+    TextView dateNais;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +33,24 @@ public class Profil extends AppCompatActivity {
         mail = bundle2.getString("mail");
         db = new SQLiteHelper(getApplicationContext());
 
+        pseudo = (TextView)findViewById(R.id.id_textview_pseudo);
+        pseudo.setText(db.affPseudo(mail));
+
         nom = (TextView)findViewById(R.id.id_textview_nom);
         nom.setText(db.affNom(mail));
 
         prenom = (TextView)findViewById(R.id.id_textview_prenom);
         prenom.setText(db.affPrenom(mail));
 
-        pseudo = (TextView)findViewById(R.id.id_textview_pseudo);
-        pseudo.setText(db.affPseudo(mail));
-
         email =(TextView)findViewById(R.id.id_textview_email);
         email.setText(mail);
+
+        genre = (TextView)findViewById(R.id.id_textview_sexe);
+        genre.setText(db.affGenre(mail));
+
+        dateNais = (TextView)findViewById(R.id.id_textview_datenaissance);
+        dateNais.setText(db.affDateNais(mail));
+
 
         retour=findViewById(R.id.id_bouton_retour);
 

@@ -145,6 +145,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return pseudo;
     }
 
+    String affDateNais(String mail){
+        String dateNais;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "SELECT dateNais FROM Joueur WHERE mail='"+mail+"'";
+        Cursor cursor = db.rawQuery(sql,null);
+        cursor.moveToLast();
+        dateNais = cursor.getString(0);
+        return dateNais;
+    }
     String affGenre (String mail){
         String genre;
         SQLiteDatabase db = this.getReadableDatabase();
