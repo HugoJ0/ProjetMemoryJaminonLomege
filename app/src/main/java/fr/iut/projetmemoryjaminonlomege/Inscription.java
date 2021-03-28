@@ -25,7 +25,6 @@ public class Inscription extends AppCompatActivity {
     EditText pseudo,FirstName,LastName,mail,password;
     TextView dateNais;
     RadioGroup genres;
-    Switch sw;
 
 
 
@@ -41,7 +40,6 @@ public class Inscription extends AppCompatActivity {
         LastName = findViewById(R.id.id_input_prenom);
         dateNais = (TextView) findViewById(R.id.id_input_datenaissance);
         genres = findViewById(R.id.radioSex);
-        sw = findViewById(R.id.switch1);
 
         dateNais.setOnClickListener(new View.OnClickListener() {
 

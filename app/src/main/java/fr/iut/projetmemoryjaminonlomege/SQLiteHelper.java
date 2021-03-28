@@ -21,6 +21,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         super(context, BDD_NAME,null,1 );
     }
 
+    // Fonction permettant la création de notre table joueur et de ses champs.
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql =
@@ -46,6 +47,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
 
+    /* La fonction verifMail( prend en paramètre un mail, elle permet de vérifier si le mail est déjà présent dans la base de données.
+       Elle retourne un booléen.
+     */
     boolean verifMail(String mail){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql="SELECT * FROM Joueur WHERE mail='"+mail+"'";
@@ -57,6 +61,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             return true;
     }
 
+    /* La fonction addJoueur() prend en paramètres les différents champs qui seront entrés par l'utilisateur lors de son inscription
+       Ele va ensuite associer les paramètres aux champs de la table pour insérer le nouveau joueur dans la base de données.
+       La fonction retourne un booléen.
+
+     */
     boolean addJoueur(String pseudo,String mail, String password, String prenom, String nom, String genre, String dateNais, double score){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues data = new ContentValues();
@@ -77,6 +86,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    /*
+        La fonction connexion() prend en paramètres l'email et le mot de passe rentrés par l'utilisateur pour essayer de les faire correspondre
+        avec les identifiants déjà présents dans la base de données.
+        Elle retourne un booléen.
+
+     */
     boolean connection(String mail, String password){
         SQLiteDatabase db = this.getReadableDatabase();
         String sql="SELECT * FROM Joueur WHERE mail='"+mail+"' AND password='"+password+"'";
@@ -88,6 +103,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    /*
+        La fonction affScore() prend en paramètre un mail, elle va retourner le meilleur score réalisé par le joueur.
+     */
     double affScore(String mail){
         double score;
         SQLiteDatabase db=this.getReadableDatabase();
@@ -101,7 +119,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         else
             return 0;
     }
-
+    /*
+        La fonction affNom() prend en paramètre un mail, elle va retourner le nom du joueur.
+     */
     String affNom(String mail){
         String nom;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -111,6 +131,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         nom = cursor.getString(0);
         return nom;
     }
+
+    /*
+        La fonction affPrenom() prend en paramètre un mail, elle va retourner le prenom du joueur.
+     */
 
     String affPrenom(String mail){
         String prenom;
@@ -122,6 +146,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return prenom;
     }
 
+    /*
+        La fonction affPseudo() prend en paramètre un mail, elle va retourner le pseudo du joueur.
+     */
+
     String affPseudo(String mail){
         String pseudo;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -132,6 +160,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return pseudo;
     }
 
+    /*
+        La fonction affDateNais() prend en paramètre un mail, elle va retourner la date de naissance du joueur.
+     */
+
     String affDateNais(String mail){
         String dateNais;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -141,6 +173,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         dateNais = cursor.getString(0);
         return dateNais;
     }
+
+    /*
+    La fonction affGenre() prend en paramètre un mail, elle va retourner le genre du joueur.
+    */
     String affGenre (String mail){
         String genre;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -151,7 +187,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return genre;
     }
 
-
+    /*
+        La fonction affClassement() consiste à récupérer les 10 meilleurs joueur dans la base de données en fonction de leur score.
+        elle retourne un tableau à deux dimensions.
+     */
     String[][] affClassement(){
         String[][] tab = new String[10][2];
         String pseudo;
@@ -171,6 +210,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return tab;
     }
 
+    /*
+    La fonction UpdateScore() prend en paramètre un mail et un score (celui effectué lors du niveau), elle va mettre à jour le score dans la base de données .
+    */
     void UpdateScore(String mail, double scoreDuNiveau){
         double ancienScore= affScore(mail);
         double nouveauScore=ancienScore+scoreDuNiveau;
