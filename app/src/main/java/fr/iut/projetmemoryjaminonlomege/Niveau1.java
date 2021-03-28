@@ -3,6 +3,7 @@ package fr.iut.projetmemoryjaminonlomege;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -32,8 +33,13 @@ public class Niveau1 extends AppCompatActivity {
     boolean vivant,recommenceEtape;
     double score,poids;
 
+
+
+
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_niveau1);
 
@@ -116,7 +122,13 @@ public class Niveau1 extends AppCompatActivity {
 
     }
 
+
     public void etapeOrdi() {
+        final MediaPlayer yw = MediaPlayer.create(this,R.raw.yellow);
+        final MediaPlayer bl = MediaPlayer.create(this,R.raw.blue);
+        final MediaPlayer rd = MediaPlayer.create(this,R.raw.red);
+        final MediaPlayer grn = MediaPlayer.create(this,R.raw.green);
+
         if(!recommenceEtape)
             rand();
         recommenceEtape=false;
@@ -129,15 +141,19 @@ public class Niveau1 extends AppCompatActivity {
                     switch (choix) {
                         case 1:
                             AllumageBouton(rouge);
+                            rd.start();
                             break;
                         case 2:
                             AllumageBouton(vert);
+                            grn.start();
                             break;
                         case 3:
                             AllumageBouton(bleu);
+                            bl.start();
                             break;
                         case 4:
                             AllumageBouton(jaune);
+                            yw.start();
                             break;
                     }
                 }
@@ -164,6 +180,7 @@ public class Niveau1 extends AppCompatActivity {
     }
 
     private void AllumageBouton(Button button) {
+
 
         final Button b = button;
 

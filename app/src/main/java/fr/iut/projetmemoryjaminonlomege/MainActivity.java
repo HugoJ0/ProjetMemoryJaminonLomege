@@ -3,6 +3,7 @@ package fr.iut.projetmemoryjaminonlomege;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         connexion=findViewById(R.id.main_id_bouton_connexion);
         inscription=findViewById(R.id.main_id_bouton_inscription);
         regles=findViewById(R.id.main_id_bouton_regles);
+
 
         regles.setOnClickListener(new View.OnClickListener() {
             @Override
