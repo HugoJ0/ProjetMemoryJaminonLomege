@@ -42,7 +42,6 @@ public class Inscription extends AppCompatActivity {
         dateNais = (TextView) findViewById(R.id.id_input_datenaissance);
         genres = findViewById(R.id.radioSex);
         sw = findViewById(R.id.switch1);
-        MainActivity song = new MainActivity();
 
         dateNais.setOnClickListener(new View.OnClickListener() {
 
