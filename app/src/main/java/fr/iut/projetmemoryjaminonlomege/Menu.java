@@ -21,6 +21,7 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        //Initialisation
         Intent intent2=getIntent();
         Bundle bundle2=intent2.getExtras();
         mail = bundle2.getString("mail");
@@ -35,12 +36,12 @@ public class Menu extends AppCompatActivity {
 
         db = new SQLiteHelper(getApplicationContext());
 
+        //Affichage du pseudo et du score sur le menu
         nom.setText(db.affPseudo(mail));
-
         scoreStr = String.valueOf(db.affScore(mail));
         score.setText(scoreStr);
 
-
+        //Gestion du bouton classement, renvoie vers la page contenant le classement
         classement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +54,8 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Gestion du bouton profil, renvoie vers la page contenant le profil
         profil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +68,8 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Gestion du bouton nouvellePartie, renvoie vers la page permettant de choisir un mode de jeu
         nouvellePartie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +83,7 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        //Gestion du bouton deconnexion, permet de se deconnecter, renvoie vers la page d'acceuil.
         deconnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

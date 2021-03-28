@@ -1,5 +1,6 @@
 package fr.iut.projetmemoryjaminonlomege;
 
+//Classe Joueur, possédant un pseudo, un score et un rang, utilisé pour le classement.
 public class Joueur {
 
     private String pseudo;
