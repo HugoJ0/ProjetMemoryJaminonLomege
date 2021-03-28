@@ -25,7 +25,6 @@ public class Inscription extends AppCompatActivity {
     EditText pseudo,FirstName,LastName,mail,password;
     TextView dateNais;
     RadioGroup genres;
-    Switch sw;
 
 
 
@@ -41,7 +40,10 @@ public class Inscription extends AppCompatActivity {
         LastName = findViewById(R.id.id_input_prenom);
         dateNais = (TextView) findViewById(R.id.id_input_datenaissance);
         genres = findViewById(R.id.radioSex);
-        sw = findViewById(R.id.switch1);
+
+        /*
+            Au clic sur le TextView dateNais, un widget qui permettra de sélectionner une date de naissance s'affichera.
+         */
 
         dateNais.setOnClickListener(new View.OnClickListener() {
 
@@ -68,6 +70,10 @@ public class Inscription extends AppCompatActivity {
 
         db = new SQLiteHelper(getApplicationContext());
 
+        /*
+            Au clic sur le bouton inscription, les vérifications seront effectuées dans la base de données en comparant avec les données insérées par l'utilisateur.
+            Si tout va bien, on redirigera le joueur vers le menu principal, sinon il aura un message d'erreur personnalisé.
+         */
         inscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +97,9 @@ public class Inscription extends AppCompatActivity {
             }
         });
 
-
+        /*
+            Au clic sur le bouton retour, on renvoie l'utilisateur sur l'accueil du jeu.
+         */
         retour=findViewById(R.id.inscription_id_bouton_retour);
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
