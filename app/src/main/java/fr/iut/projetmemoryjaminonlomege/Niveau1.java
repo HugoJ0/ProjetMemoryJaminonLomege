@@ -129,8 +129,10 @@ public class Niveau1 extends AppCompatActivity {
         final MediaPlayer rd = MediaPlayer.create(this,R.raw.red);
         final MediaPlayer grn = MediaPlayer.create(this,R.raw.green);
 
-        if(!recommenceEtape)
+        if(!recommenceEtape) {
             rand();
+        }
+        etape++;
         recommenceEtape=false;
         int temps=1;
         Handler handler = new Handler();
@@ -176,7 +178,6 @@ public class Niveau1 extends AppCompatActivity {
             choix++;
             ordi.add(choix);
         }
-        etape++;
     }
 
     private void AllumageBouton(Button button) {
@@ -239,6 +240,7 @@ public class Niveau1 extends AppCompatActivity {
                 Toast.makeText(Niveau1.this,"Mauvaise couleur", Toast.LENGTH_SHORT).show();
                 viesRestantes--;
                 recommenceEtape=true;
+                etape--;
                 if (viesRestantes <= 0)
                     vivant = false;
             }

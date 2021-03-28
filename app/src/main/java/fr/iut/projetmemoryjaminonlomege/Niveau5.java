@@ -132,6 +132,7 @@ public class Niveau5 extends AppCompatActivity {
 
         if(!recommenceEtape)
             rand();
+        etape++;
         recommenceEtape=false;
         int temps=1;
         Handler handler = new Handler();
@@ -193,7 +194,6 @@ public class Niveau5 extends AppCompatActivity {
             choix++;
             ordi.add(choix);
         }
-        etape++;
     }
 
     private void AllumageBouton(Button button) {
@@ -254,6 +254,7 @@ public class Niveau5 extends AppCompatActivity {
         } else {
             viesRestantes--;
             recommenceEtape=true;
+            etape--;
             if (viesRestantes <= 0)
                 vivant = false;
         }
