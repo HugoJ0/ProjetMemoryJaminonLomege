@@ -7,10 +7,14 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
 
     Button connexion,inscription, regles;
+    Switch sw;
+
 
 
     @Override
@@ -21,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         connexion=findViewById(R.id.main_id_bouton_connexion);
         inscription=findViewById(R.id.main_id_bouton_inscription);
         regles=findViewById(R.id.main_id_bouton_regles);
+        sw = findViewById(R.id.id_music_switch);
+
+        son(sw);
 
 
         regles.setOnClickListener(new View.OnClickListener() {
@@ -46,4 +53,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    public void son(Switch swi) {
+        final MediaPlayer music = MediaPlayer.create(this, R.raw.haydem);
+        swi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked == false) {
+                    music.pause();
+                } else if (isChecked == true) {
+                    music.start();
+                }
+
+            }
+        });
+    }
+
 }
