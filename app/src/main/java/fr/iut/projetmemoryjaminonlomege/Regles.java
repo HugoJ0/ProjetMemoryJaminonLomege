@@ -16,6 +16,7 @@ public class Regles extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regles);
 
+        //Gestion du bouton retour, renvoie vers la page d'acceuil
         retour=findViewById(R.id.regles_id_bouton_retour);
         retour.setOnClickListener(new View.OnClickListener() {
             @Override

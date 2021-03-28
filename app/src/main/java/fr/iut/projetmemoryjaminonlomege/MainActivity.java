@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialisation
         connexion=findViewById(R.id.main_id_bouton_connexion);
         inscription=findViewById(R.id.main_id_bouton_inscription);
         regles=findViewById(R.id.main_id_bouton_regles);
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         music=MediaPlayer.create(this, R.raw.haydem);
         son(sw);
 
-
+        //Gestion du bouton règles, renvoie vers la page contenant les règles.
         regles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Gestion du bouton connexion, renvoie vers la page permettant de se connecter.
         connexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Gestion du bouton inscription, renvoie vers la page permettant de s'inscrire.
         inscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Fonction de gestion de la musique, l'active au lancement et permet de le mettre en pause lorsque l'on clique sur le switch.
     public void son(Switch swi) {
         music.start();
         music.setLooping(true);

@@ -25,7 +25,7 @@ public class ChoixMode extends AppCompatActivity {
         chrono=findViewById(R.id.id_bouton_chrono);
         retour=findViewById(R.id.id_bouton_retour);
 
-
+        //Gestion du bouton facile, renvoie vers le niveau 1 en mettant les bonnes variables.
         facile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +44,8 @@ public class ChoixMode extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Gestion du bouton difficile, renvoie vers le niveau 1 en mettant les bonnes variables.
         difficile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +64,8 @@ public class ChoixMode extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Gestion du bouton expert, renvoie vers le niveau 1 en mettant les bonnes variables.
         expert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,12 +84,16 @@ public class ChoixMode extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Gestion du bouton chrono, ce mode n'est pas configuré.
         chrono.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ChoixMode.this, "Indisponible pour le moment", Toast.LENGTH_SHORT).show();
             }
         });
+
+        //Gestion du bouton retour, renvoi vers le Menu.
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

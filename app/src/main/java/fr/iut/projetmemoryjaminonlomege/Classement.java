@@ -26,6 +26,8 @@ public class Classement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classement);
+
+        //Initialisation des différentes variables.
         db = new SQLiteHelper(getApplicationContext());
 
         liste = db.affClassement();
@@ -37,6 +39,7 @@ public class Classement extends AppCompatActivity {
         classementRecyclerView.setAdapter(monJoueurAdapter);
 
 
+        //Gestion du bouton retour, renvoi vers le menu
         retour=findViewById(R.id.id_bouton_retour);
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +56,7 @@ public class Classement extends AppCompatActivity {
         });
     }
 
+    //Fonction qui ajoute à une liste de Joueur les resultats de la base de donnée.
     public void initListe(){
         listeJoueurs=new ArrayList<Joueur>();
         Joueur joueurParDefault = new Joueur();

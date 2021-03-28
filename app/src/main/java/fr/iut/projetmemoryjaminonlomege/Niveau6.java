@@ -34,6 +34,7 @@ public class Niveau6 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_niveau6);
 
+        //Initialisation et récupération des données
         boutons=new ArrayList<Button>();
         recupererBoutons();
         activerBoutons(false);
@@ -55,12 +56,15 @@ public class Niveau6 extends AppCompatActivity {
         textview_etape.setText(etape+" / "+nbFinBloc);
         textview_vies.setText(viesRestantes+" / "+vies);
 
+        //Démarre une étape lorsque l'on appuie sur le bouton start
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 start.setClickable(false);
                 start.setAlpha(0.5f);
                 etapeOrdi();
+
+                //Permet à l'utilisateur de cliquer et vérifie si c'est la bonne couleur
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -84,6 +88,7 @@ public class Niveau6 extends AppCompatActivity {
             }
         });
 
+        //Gestion du bouton retour pour revenir au choix des modes.
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +103,7 @@ public class Niveau6 extends AppCompatActivity {
         });
     }
 
+    //Fonction permettant de récupérer les boutons grâce à leurs ids et de les ajouters à une liste de boutons.
     private void recupererBoutons() {
         rouge = findViewById(R.id.id_bouton_couleur_1);
         vert = findViewById(R.id.id_bouton_couleur_2);
@@ -122,7 +128,9 @@ public class Niveau6 extends AppCompatActivity {
 
     }
 
+    //Fonction permettant de faire une étape coté ordinateur (Choix d'un boutons puis affichage et note de musique)
     public void etapeOrdi() {
+
         final MediaPlayer yw = MediaPlayer.create(this,R.raw.yellow);
         final MediaPlayer bl = MediaPlayer.create(this,R.raw.blue);
         final MediaPlayer rd = MediaPlayer.create(this,R.raw.red);
@@ -187,6 +195,7 @@ public class Niveau6 extends AppCompatActivity {
         }
     }
 
+    //Fonction permettant de choisir un bouton grâce à son indice, elle ajoute ce choix à une liste
     private void rand(){
         Random choixOrdi = new Random();
         int choix;
@@ -203,6 +212,7 @@ public class Niveau6 extends AppCompatActivity {
         }
     }
 
+    //Fonction permettant l'allumage des boutons, progressivement elle modifie l'alpha de chaque bouton pour donner une impression de clignotement.
     private void AllumageBouton(Button button) {
 
         final Button b = button;
@@ -240,6 +250,7 @@ public class Niveau6 extends AppCompatActivity {
         }, 300);
     }
 
+    //Fonction permettant l'activation ou la désactivation des boutons en fonction du bouléen que l'on met en paramètre.
     private void activerBoutons(boolean bool){
         for (final Button bouton : boutons) {
             bouton.setClickable(bool);
@@ -255,6 +266,9 @@ public class Niveau6 extends AppCompatActivity {
         }
     }
 
+    //Fonction permettant de vérifier si l'indice du bouton envoyer est bien le même que celui choisit précédemment par l'ordinateur.
+    //Si c'est le cas alors on augmente la position pour vérifier les blocs suivants, sinon on pert une vie et recommence l'étape.
+    //Si la position correspond au nombre de bloc dans l'étape alors on passe a l'étape suivante.
     private void verifieBouton(int indiceBouton) {
         if (indiceBouton == ordi.get(position)) {
             position++;
@@ -270,6 +284,10 @@ public class Niveau6 extends AppCompatActivity {
         }
     }
 
+    //Fonction qui gère la fin d'une étape et le début d'une nouvelle.
+    //Si l'etape était la dernière alors on calcul le score puis on passe au niveau suivant.
+    // Sinon on passe a l'étape suivante.
+    //Si l'on a plus de vie alors on recommence le niveau.
     private void nouvelleEtape(){
         if(vivant){
             if(etape>nbFinBloc){
