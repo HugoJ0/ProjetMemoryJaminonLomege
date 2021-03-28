@@ -136,6 +136,7 @@ public class Niveau7 extends AppCompatActivity {
         final MediaPlayer blk = MediaPlayer.create(this,R.raw.black);
         if(!recommenceEtape)
             rand();
+        etape++;
         recommenceEtape=false;
         int temps=1;
         Handler handler = new Handler();
@@ -205,7 +206,6 @@ public class Niveau7 extends AppCompatActivity {
             choix++;
             ordi.add(choix);
         }
-        etape++;
     }
 
     private void AllumageBouton(Button button) {
@@ -266,6 +266,7 @@ public class Niveau7 extends AppCompatActivity {
         } else {
             viesRestantes--;
             recommenceEtape=true;
+            etape--;
             if (viesRestantes <= 0)
                 vivant = false;
         }
