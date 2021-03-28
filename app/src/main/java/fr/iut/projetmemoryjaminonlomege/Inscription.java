@@ -83,6 +83,9 @@ public class Inscription extends AppCompatActivity {
                 if (db.verifMail(mail.getText().toString())) {
                     if (db.addJoueur(pseudo.getText().toString(), mail.getText().toString(), password.getText().toString(), FirstName.getText().toString(), LastName.getText().toString(), sexe.getText().toString(), dateNais.getText().toString(), 0)) {
                         Intent intent = new Intent(Inscription.this, Menu.class);
+                      /*
+                        On créé un bundle contenant le contenu de la variable mail qui sera utilisée dans toutes les classes java dans lesquelles le mail est nécessaire.
+                       */
                         Bundle bundle = new Bundle();
                         bundle.putString("mail", mail.getText().toString());
                         intent.putExtras(bundle);

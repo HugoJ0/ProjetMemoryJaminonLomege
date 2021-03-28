@@ -33,6 +33,9 @@ public class Connexion extends AppCompatActivity {
             public void onClick(View v) {
                 if (db.connection(mail.getText().toString(),password.getText().toString())){
                     Intent intent = new Intent(Connexion.this,Menu.class);
+                    /*
+                        On créé un bundle contenant le contenu de la variable mail qui sera utilisée dans toutes les classes java dans lesquelles le mail est nécessaire.
+                    */
                     Bundle bundle=new Bundle();
                     bundle.putString("mail", mail.getText().toString());
                     intent.putExtras(bundle);
