@@ -24,7 +24,10 @@ public class Connexion extends AppCompatActivity {
         password = findViewById(R.id.id_input_password);
         connexion = findViewById(R.id.id_bouton_connexion);
         db = new SQLiteHelper(getApplicationContext());
-
+        /*
+            Au clic sur le bouton connexion, une vérification dans la base de données sera effectuée pour faire correspondre l'email et le mot de passe rentrés par l'utilisateur avec ceux présents dans la BDD.
+            S'il n'y a pas d'erreur, le joueur est redirigé vers le menu, sinon un message d'erreur personnalisé sera affiché.
+         */
         connexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +43,10 @@ public class Connexion extends AppCompatActivity {
                 }
             }
         });
+
+        /*
+            Au clic sur le bouton retour, on renvoie l'utilisateur sur l'accueil du jeu.
+         */
 
         retour=findViewById(R.id.connexion_id_bouton_retour);
         retour.setOnClickListener(new View.OnClickListener() {
