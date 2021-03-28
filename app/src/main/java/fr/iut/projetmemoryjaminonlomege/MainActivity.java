@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void son(Switch swi) {
         final MediaPlayer music = MediaPlayer.create(this, R.raw.haydem);
+        music.start();
         swi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
