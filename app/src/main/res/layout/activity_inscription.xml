@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Inscription">
 
-    <Switch
-        android:id="@+id/id_music_switch2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline37"
-        app:layout_constraintVertical_bias="0.529" />
-
     <EditText
         android:id="@+id/id_input_pseudo"
         android:layout_width="wrap_content"

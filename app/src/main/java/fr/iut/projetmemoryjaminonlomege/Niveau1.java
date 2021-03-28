@@ -33,9 +33,6 @@ public class Niveau1 extends AppCompatActivity {
     boolean vivant,recommenceEtape;
     double score,poids;
 
-
-
-
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
